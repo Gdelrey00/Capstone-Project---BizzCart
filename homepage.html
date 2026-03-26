@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>KMJ Party Food Cart</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="home" class="screen on">
+
+  <!-- Fixed Nav -->
+  <nav class="hnav">
+    <a class="logo" href="homepage.html">
+      <div class="logo-mark">🍢</div>
+      <div class="logo-name">KMJ <span>Party</span> Food Cart</div>
+    </a>
+    <div class="hnav-right">
+      <nav class="nav-links">
+        <a class="nav-link" onclick="document.getElementById('packages-section').scrollIntoView({behavior:'smooth'})">Menu</a>
+        <a class="nav-link" onclick="document.querySelector('.features').scrollIntoView({behavior:'smooth'})">About</a>
+        <a class="nav-link" onclick="document.querySelector('.how').scrollIntoView({behavior:'smooth'})">How It Works</a>
+      </nav>
+      <button class="nav-admin-btn" onclick="openLoginModal()">🔒 Admin Login</button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-deco d1">🎉</div>
+    <div class="hero-deco d2">🍢</div>
+    <div class="hero-deco d3">🌮</div>
+    <div class="hero-inner">
+      <div class="htag">Now Accepting Bookings for 2026</div>
+      <h1>
+        Make Every Event<br>
+        <em>Deliciously</em>
+        <span class="sub-line">Unforgettable</span>
+      </h1>
+      <p class="hero-desc">Premium party food carts brought directly to your event. From birthday parties to weddings — we make every celebration special.</p>
+      <div class="hero-ctas">
+        <button class="cta-primary" onclick="gotoBooking()">🎉 Book Your Event Now</button>
+        <button class="cta-sec" onclick="document.getElementById('packages-section').scrollIntoView({behavior:'smooth'})">View Our Packages ↓</button>
+      </div>
+      <div class="hero-badges">
+        <div class="hbadge">🎂 Birthdays</div>
+        <div class="hbadge">💍 Weddings</div>
+        <div class="hbadge">🏢 Corporate</div>
+        <div class="hbadge">🎓 Graduations</div>
+        <div class="hbadge">🎉 Debuts</div>
+        <div class="hbadge">✝️ Christenings</div>
+      </div>
+    </div>
+    <div class="scroll-ind">Scroll</div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="feat-inner">
+      <div class="section-label">Why Choose KMJ</div>
+      <div class="section-title">Everything Your Party Needs</div>
+      <div class="section-sub">Professional food cart service with fresh ingredients, attentive staff, and flexible packages for any event size.</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="feat-icon">🚚</div><div class="feat-title">We Come to You</div><div class="feat-desc">We set up our food carts at your venue — anywhere in Metro Manila and nearby areas.</div></div>
+        <div class="feat-card"><div class="feat-icon">👨‍🍳</div><div class="feat-title">Fresh & Live Cooking</div><div class="feat-desc">Food prepared fresh on-site by our trained staff so your guests always get hot, delicious meals.</div></div>
+        <div class="feat-card"><div class="feat-icon">🎨</div><div class="feat-title">Customizable Setup</div><div class="feat-desc">Mix and match carts to create the perfect menu. Special themes and decorations available.</div></div>
+        <div class="feat-card"><div class="feat-icon">📱</div><div class="feat-title">Easy Online Booking</div><div class="feat-desc">Book in minutes through our website. Receive confirmation within 24 hours.</div></div>
+        <div class="feat-card"><div class="feat-icon">💯</div><div class="feat-title">100+ Events Done</div><div class="feat-desc">Trusted by hundreds of happy clients. Rated 4.9/5 stars across all events.</div></div>
+        <div class="feat-card"><div class="feat-icon">💬</div><div class="feat-title">Dedicated Support</div><div class="feat-desc">Personal coordinator assigned to your event from booking all the way to cleanup.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Packages Preview -->
+  <section class="packages" id="packages-section">
+    <div class="pkg-inner">
+      <div class="section-label">Our Menu</div>
+      <div class="section-title">Pick Your Food Carts</div>
+      <div class="section-sub">Choose from our selection of party food carts. Mix and match to build your dream event menu.</div>
+      <div class="pkg-grid">
+        <div class="pkg-card"><div class="pkg-em">🌮</div><div class="pkg-name">Taco & Nachos</div><div class="pkg-price">₱4,500</div></div>
+        <div class="pkg-card"><div class="pkg-em">🍢</div><div class="pkg-name">BBQ Skewers</div><div class="pkg-price">₱3,800</div></div>
+        <div class="pkg-card"><div class="pkg-em">🍝</div><div class="pkg-name">Pasta Station</div><div class="pkg-price">₱4,200</div></div>
+        <div class="pkg-card"><div class="pkg-em">🥟</div><div class="pkg-name">Dimsum Cart</div><div class="pkg-price">₱3,500</div></div>
+        <div class="pkg-card"><div class="pkg-em">🍮</div><div class="pkg-name">Dessert Cart</div><div class="pkg-price">₱3,200</div></div>
+        <div class="pkg-card"><div class="pkg-em">🥤</div><div class="pkg-name">Drinks & Juice</div><div class="pkg-price">₱2,800</div></div>
+      </div>
+      <div class="pkg-cta">
+        <button class="cta-primary" onclick="gotoBooking()">🎉 Book Now — Choose Your Carts</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how">
+    <div class="how-inner">
+      <div class="section-label">How It Works</div>
+      <div class="section-title">Book in 4 Easy Steps</div>
+      <div class="section-sub">From selecting your carts to event day — the process is simple and stress-free.</div>
+      <div class="steps-visual">
+        <div class="sv-item"><div class="sv-num">1</div><div class="sv-info"><div class="sv-title">Choose Your Carts</div><div class="sv-desc">Pick one or more food cart packages for your event.</div></div></div>
+        <div class="sv-item"><div class="sv-num">2</div><div class="sv-info"><div class="sv-title">Set Your Schedule</div><div class="sv-desc">Select your event date and preferred setup time.</div></div></div>
+        <div class="sv-item"><div class="sv-num">3</div><div class="sv-info"><div class="sv-title">Fill Your Details</div><div class="sv-desc">Tell us about your event, venue, and guest count.</div></div></div>
+        <div class="sv-item"><div class="sv-num">4</div><div class="sv-info"><div class="sv-title">We Confirm!</div><div class="sv-desc">KMJ contacts you within 24 hours to confirm and collect your deposit.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="hfooter">
+    <div class="hfooter-logo">KMJ <span>Party</span> Food Cart</div>
+    <p>📞 +63 917 000 0000 &nbsp;·&nbsp; 📧 hello@kmjpartyfoodcart.ph</p>
+    <p>📍 Serving Metro Manila and nearby provinces</p>
+    <div class="hfooter-copy">© 2026 KMJ Party Food Cart. All rights reserved.</div>
+  </footer>
+</div>
+
+<!-- ADMIN LOGIN MODAL -->
+<div class="modal-overlay" id="login-modal" onclick="closeLoginModal(event)">
+  <div class="modal" style="position:relative">
+    <button class="modal-close" onclick="closeLoginModal()">✕</button>
+    <div class="modal-logo">🔐</div>
+    <div class="modal-title">Admin Login</div>
+    <div class="modal-sub">KMJ Party Food Cart — Staff Only</div>
+    <div class="login-err" id="lerr">❌ Incorrect username or password.</div>
+    <div class="mfg"><label>Username</label><input type="text" id="luser" placeholder="admin" autocomplete="username"></div>
+    <div class="mfg"><label>Password</label><input type="password" id="lpass" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"></div>
+    <p class="login-hint">Demo: <strong>admin</strong> / <strong>kmj2026</strong></p>
+    <button class="btn btnp btnfull" onclick="doLogin()">Sign In to Dashboard →</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script-home.js"></script>
+</body>
+</html>

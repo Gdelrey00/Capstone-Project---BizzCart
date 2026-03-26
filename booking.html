@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Book Your Event — KMJ Party Food Cart</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="booking" class="screen on">
+  <div class="topbar">
+    <div class="tb-left">
+      <button class="back-btn" onclick="window.location.href='homepage.html'">← Home</button>
+      <div class="logo-mark" style="width:30px;height:30px;font-size:15px;border-radius:7px">🍢</div>
+      <div class="logo-name" style="font-size:15px">KMJ <span>Party</span> Food Cart</div>
+      <div class="screen-badge">BOOK EVENT</div>
+    </div>
+    <div class="tb-right">
+      <a href="tel:+639170000000" style="font-size:18px;text-decoration:none">📞</a>
+    </div>
+  </div>
+
+  <div class="booking-hero">
+    <div class="bh-tag">✨ Online Booking</div>
+    <h2>Book Your <span>Dream Event</span> Food Cart</h2>
+    <p>Delicious party food carts for any celebration. Confirmed within 24 hours.</p>
+    <div class="bh-badges">
+      <div class="bh-badge">🎂 Birthdays</div>
+      <div class="bh-badge">💍 Weddings</div>
+      <div class="bh-badge">🏢 Corporate</div>
+      <div class="bh-badge">🎓 Graduations</div>
+    </div>
+  </div>
+
+  <div class="bwrap">
+    <div class="steps" id="steps-bar">
+      <div class="si"><div class="sc active" id="sc1">1</div><div class="sl active" id="sl1">Carts</div></div>
+      <div class="scon" id="cn1"></div>
+      <div class="si"><div class="sc" id="sc2">2</div><div class="sl" id="sl2">Schedule</div></div>
+      <div class="scon" id="cn2"></div>
+      <div class="si"><div class="sc" id="sc3">3</div><div class="sl" id="sl3">Details</div></div>
+      <div class="scon" id="cn3"></div>
+      <div class="si"><div class="sc" id="sc4">4</div><div class="sl" id="sl4">Review</div></div>
+    </div>
+
+    <!-- Step 1: Services -->
+    <div class="bpanel active" id="s1">
+      <div class="card">
+        <div class="ctitle">Choose Your Food Carts</div>
+        <div class="csub">Select one or more packages — mix & match!</div>
+        <div class="sgrid">
+          <div class="srv" onclick="toggleSrv(this,'Taco & Nachos Cart',4500)"><div class="sem">🌮</div><div class="sname">Taco & Nachos</div><div class="sprice">₱4,500</div><div class="sdesc">Mini tacos, nachos, dips</div></div>
+          <div class="srv" onclick="toggleSrv(this,'BBQ Skewers Cart',3800)"><div class="sem">🍢</div><div class="sname">BBQ Skewers</div><div class="sprice">₱3,800</div><div class="sdesc">Grilled skewers & sauces</div></div>
+          <div class="srv" onclick="toggleSrv(this,'Pasta Station',4200)"><div class="sem">🍝</div><div class="sname">Pasta Station</div><div class="sprice">₱4,200</div><div class="sdesc">Fresh pasta, 3 sauces</div></div>
+          <div class="srv" onclick="toggleSrv(this,'Dimsum Cart',3500)"><div class="sem">🥟</div><div class="sname">Dimsum Cart</div><div class="sprice">₱3,500</div><div class="sdesc">Siomai, hakaw & more</div></div>
+          <div class="srv" onclick="toggleSrv(this,'Dessert Cart',3200)"><div class="sem">🍮</div><div class="sname">Dessert Cart</div><div class="sprice">₱3,200</div><div class="sdesc">Leche flan, halo-halo</div></div>
+          <div class="srv" onclick="toggleSrv(this,'Drinks & Juice Bar',2800)"><div class="sem">🥤</div><div class="sname">Drinks & Juice</div><div class="sprice">₱2,800</div><div class="sdesc">Fresh juices, iced teas</div></div>
+        </div>
+        <div class="selbox" id="selbox">🛒 <strong>Selected:</strong> <span id="sellist"></span><br><strong>Subtotal: <span id="seltotal"></span></strong></div>
+        <button class="btn btnp btnfull" onclick="goStep(2)">Next: Choose Date & Time →</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Schedule -->
+    <div class="bpanel" id="s2">
+      <div class="card">
+        <div class="ctitle">When Is Your Event?</div>
+        <div class="csub">Pick a date and preferred setup time</div>
+        <div class="calrow">
+          <div class="calbox">
+            <div class="calhead">
+              <button class="calnav" onclick="changeMonth(-1)">‹</button>
+              <span class="callbl" id="callbl"></span>
+              <button class="calnav" onclick="changeMonth(1)">›</button>
+            </div>
+            <div class="calgrid" id="calgrid">
+              <div class="cdn">Su</div><div class="cdn">Mo</div><div class="cdn">Tu</div>
+              <div class="cdn">We</div><div class="cdn">Th</div><div class="cdn">Fr</div><div class="cdn">Sa</div>
+            </div>
+            <div class="dchosen" id="dchosen"></div>
+          </div>
+          <div class="timebox">
+            <div class="timelbl">Available Times</div>
+            <div class="tslots">
+              <div class="ts" onclick="pickTime(this,'9:00 AM')">9:00 AM</div>
+              <div class="ts" onclick="pickTime(this,'10:00 AM')">10:00 AM</div>
+              <div class="ts unavail">11:00 AM<br><small>Booked</small></div>
+              <div class="ts" onclick="pickTime(this,'12:00 PM')">12:00 PM</div>
+              <div class="ts" onclick="pickTime(this,'1:00 PM')">1:00 PM</div>
+              <div class="ts unavail">2:00 PM<br><small>Booked</small></div>
+              <div class="ts" onclick="pickTime(this,'3:00 PM')">3:00 PM</div>
+              <div class="ts" onclick="pickTime(this,'4:00 PM')">4:00 PM</div>
+              <div class="ts" onclick="pickTime(this,'5:00 PM')">5:00 PM</div>
+              <div class="ts" onclick="pickTime(this,'6:00 PM')">6:00 PM</div>
+            </div>
+          </div>
+        </div>
+        <div class="brow btw"><button class="btn btno" onclick="goStep(1)">← Back</button><button class="btn btnp" onclick="goStep(3)">Next: Details →</button></div>
+      </div>
+    </div>
+
+    <!-- Step 3: Details -->
+    <div class="bpanel" id="s3">
+      <div class="card">
+        <div class="ctitle">Your Event Details</div>
+        <div class="csub">Fill in your info so we can prepare perfectly</div>
+        <div class="fgrid">
+          <div class="fg"><label>Full Name *</label><input type="text" id="f-name" placeholder="e.g. Maria Santos" autocomplete="name"></div>
+          <div class="fg"><label>Phone Number *</label><input type="tel" id="f-phone" placeholder="+63 9XX XXX XXXX" autocomplete="tel"></div>
+          <div class="fg"><label>Email Address</label><input type="email" id="f-email" placeholder="you@email.com" autocomplete="email"></div>
+          <div class="fg"><label>Event Type *</label><select id="f-event"><option value="">Select event type</option><option>Birthday Party</option><option>Wedding Reception</option><option>Corporate Event</option><option>Graduation Party</option><option>Debut</option><option>Christening / Baptism</option><option>Holiday Party</option><option>Other</option></select></div>
+          <div class="fg"><label>Expected Guests *</label><select id="f-guests"><option value="">Select range</option><option>20–50 guests</option><option>51–100 guests</option><option>101–200 guests</option><option>200+ guests</option></select></div>
+          <div class="fg"><label>Duration</label><select id="f-dur"><option>2 hours</option><option>3 hours</option><option selected>4 hours</option><option>5 hours</option><option>6+ hours</option></select></div>
+          <div class="fg full"><label>Event Venue / Address *</label><input type="text" id="f-venue" placeholder="Full address of your venue"></div>
+          <div class="fg full"><label>Special Requests / Notes</label><textarea id="f-notes" placeholder="Dietary restrictions, theme, setup requests…"></textarea></div>
+        </div>
+        <div class="brow btw"><button class="btn btno" onclick="goStep(2)">← Back</button><button class="btn btnp" onclick="goStep(4)">Review Booking →</button></div>
+      </div>
+    </div>
+
+    <!-- Step 4: Review -->
+    <div class="bpanel" id="s4">
+      <div class="card">
+        <div class="ctitle">Review Your Booking</div>
+        <div class="csub">Double-check everything before submitting</div>
+        <div class="sumcard">
+          <div class="srow"><span class="k">📦 Packages</span><span class="v" id="sum-s">—</span></div>
+          <div class="srow"><span class="k">📅 Date</span><span class="v" id="sum-d">—</span></div>
+          <div class="srow"><span class="k">🕐 Time</span><span class="v" id="sum-t">—</span></div>
+          <div class="srow"><span class="k">⏱ Duration</span><span class="v" id="sum-dur">—</span></div>
+          <div class="srow"><span class="k">👤 Name</span><span class="v" id="sum-n">—</span></div>
+          <div class="srow"><span class="k">📱 Phone</span><span class="v" id="sum-ph">—</span></div>
+          <div class="srow"><span class="k">🎉 Event</span><span class="v" id="sum-ev">—</span></div>
+          <div class="srow"><span class="k">👥 Guests</span><span class="v" id="sum-g">—</span></div>
+          <div class="srow"><span class="k">📍 Venue</span><span class="v" id="sum-ve">—</span></div>
+          <div class="srow" style="padding-top:10px"><span class="k" style="font-weight:700;color:var(--text)">💰 Est. Total</span><span class="v" style="color:var(--accent);font-size:17px" id="sum-tot">—</span></div>
+        </div>
+        <div class="notice">⚠️ This is a <strong>booking request</strong>. KMJ will contact you within <strong>24 hours</strong>. A <strong>30% down payment</strong> secures your slot.</div>
+        <div class="brow btw"><button class="btn btno" onclick="goStep(3)">← Edit</button><button class="btn btnp" onclick="submitBooking()">🎉 Submit Request</button></div>
+      </div>
+    </div>
+
+    <!-- Step 5: Confirmation -->
+    <div class="bpanel" id="s5">
+      <div class="card">
+        <div class="cfwrap">
+          <div class="cficon">✅</div>
+          <h2>You're All Set!</h2>
+          <p>Your request has been sent to <strong>KMJ Party Food Cart</strong>.</p>
+          <p>We'll reach out within <strong>24 hours</strong> to confirm.</p>
+          <div class="refbadge" id="refnum">REF #KMJ-0000</div>
+          <div class="cfdet" id="cfdet"></div>
+          <p style="font-size:12px">📞 <strong>+63 917 000 0000</strong></p>
+        </div>
+        <div class="brow center" style="gap:10px;flex-wrap:wrap">
+          <button class="btn btno" onclick="window.location.href='homepage.html'">← Back to Home</button>
+          <button class="btn btnp" onclick="resetBooking()">📋 Book Another</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script-booking.js"></script>
+</body>
+</html>

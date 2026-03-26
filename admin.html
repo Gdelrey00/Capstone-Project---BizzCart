@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Admin Dashboard — KMJ Party Food Cart</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="admin-screen" class="screen on">
+  <div class="topbar">
+    <div class="tb-left">
+      <button class="hamburger" id="ham" onclick="toggleSidebar()"><span></span><span></span><span></span></button>
+      <div class="logo-mark" style="width:30px;height:30px;font-size:14px;border-radius:7px">🍢</div>
+      <div class="logo-name" style="font-size:15px">KMJ <span>Party</span> Food Cart</div>
+      <div class="screen-badge">ADMIN</div>
+    </div>
+    <div class="tb-right">
+      <button class="notif-btn">🔔<span class="notif-dot"></span></button>
+      <div class="av">K</div>
+      <button class="logout-btn" onclick="adminLogout()">Sign Out</button>
+    </div>
+  </div>
+
+  <div class="admin-body">
+    <div class="sidebar-bg" id="sidebar-bg" onclick="closeSidebar()"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="sg-lbl">Overview</div>
+      <button class="nitem active" onclick="showAdminPanel('dashboard',this)"><span class="ic">📊</span> Dashboard</button>
+      <button class="nitem" onclick="showAdminPanel('bookings',this)"><span class="ic">📋</span> All Bookings<span class="nbadge" id="pcount">3</span></button>
+      <button class="nitem" onclick="showAdminPanel('calendar',this)"><span class="ic">📅</span> Schedule</button>
+      <div class="sg-lbl">Clients</div>
+      <button class="nitem" onclick="showAdminPanel('clients',this)"><span class="ic">👥</span> Clients</button>
+      <button class="nitem" onclick="showAdminPanel('reports',this)"><span class="ic">📈</span> Reports</button>
+      <div class="sg-lbl">Settings</div>
+      <button class="nitem" onclick="showAdminPanel('packages',this)"><span class="ic">📦</span> Packages</button>
+      <div style="margin-top:20px;padding:0 11px">
+        <button class="btn btnp btnfull" onclick="window.location.href='homepage.html'" style="margin-bottom:8px;font-size:13px">🏠 Homepage</button>
+        <button class="btn" style="width:100%;background:var(--rbg);border:1.5px solid var(--red);color:var(--red);font-size:13px;padding:10px" onclick="adminLogout()">Sign Out</button>
+      </div>
+    </aside>
+
+    <main class="amain">
+
+      <!-- DASHBOARD -->
+      <div class="apanel active" id="panel-dashboard">
+        <div class="phead">
+          <div><div class="ptitle">Good morning, KMJ! 👋</div><div class="psub">Friday, March 6, 2026 — Day at a glance</div></div>
+          <button class="btn btnp" style="font-size:13px;padding:10px 16px" onclick="showAdminPanel('bookings',document.querySelectorAll('.nitem')[1])">View All</button>
+        </div>
+        <div class="stats">
+          <div class="stat hi"><div class="stat-ic">⏳</div><div class="stat-val">3</div><div class="stat-lbl">Pending</div></div>
+          <div class="stat"><div class="stat-ic">✅</div><div class="stat-val">12</div><div class="stat-lbl">Confirmed</div></div>
+          <div class="stat"><div class="stat-ic">🎉</div><div class="stat-val">2</div><div class="stat-lbl">Today</div></div>
+          <div class="stat"><div class="stat-ic">💰</div><div class="stat-val">₱84K</div><div class="stat-lbl">Revenue</div></div>
+        </div>
+        <div class="tcard">
+          <div class="tchead"><div class="tctitle">🔴 Pending Requests</div></div>
+          <div style="padding:12px 14px">
+            <div class="bcard" data-s="pending"><div class="bcard-top"><div><div class="bcard-name">Maria Santos</div><div class="bcard-ref">KMJ-0024</div></div><span class="pill pending">⏳ Pending</span></div><div class="bcard-info"><div>📅 Mar 15, 2026</div><div>🕐 2:00 PM</div><div>📦 Taco + BBQ</div><div>💰 ₱8,300</div></div><div class="bcard-acts"><button class="ab c" onclick="confirmCard(this,'Maria Santos')">✓ Confirm</button><button class="ab x" onclick="cancelCard(this)">✗ Cancel</button><button class="ab v" onclick="openDModal('Maria Santos','Birthday Party','Mar 15, 2026','2:00 PM','Taco + BBQ','₱8,300','50–100','Mabini St, QC','Pending')">View</button></div></div>
+            <div class="bcard" data-s="pending"><div class="bcard-top"><div><div class="bcard-name">Juan dela Cruz</div><div class="bcard-ref">KMJ-0023</div></div><span class="pill pending">⏳ Pending</span></div><div class="bcard-info"><div>📅 Mar 22, 2026</div><div>🕐 5:00 PM</div><div>📦 Full Package</div><div>💰 ₱19,200</div></div><div class="bcard-acts"><button class="ab c" onclick="confirmCard(this,'Juan dela Cruz')">✓ Confirm</button><button class="ab x" onclick="cancelCard(this)">✗ Cancel</button><button class="ab v" onclick="openDModal('Juan dela Cruz','Wedding Reception','Mar 22, 2026','5:00 PM','Full Package','₱19,200','200+','BGC Taguig','Pending')">View</button></div></div>
+            <div class="bcard" data-s="pending"><div class="bcard-top"><div><div class="bcard-name">Ana Reyes</div><div class="bcard-ref">KMJ-0022</div></div><span class="pill pending">⏳ Pending</span></div><div class="bcard-info"><div>📅 Mar 28, 2026</div><div>🕐 12:00 PM</div><div>📦 Pasta + Drinks</div><div>💰 ₱7,000</div></div><div class="bcard-acts"><button class="ab c" onclick="confirmCard(this,'Ana Reyes')">✓ Confirm</button><button class="ab x" onclick="cancelCard(this)">✗ Cancel</button><button class="ab v" onclick="openDModal('Ana Reyes','Corporate Event','Mar 28, 2026','12:00 PM','Pasta + Drinks','₱7,000','51–100','Makati','Pending')">View</button></div></div>
+          </div>
+        </div>
+        <div class="tcard">
+          <div class="tchead"><div class="tctitle">📅 Today's Events — Mar 6</div></div>
+          <div class="tl">
+            <div class="tl-item"><div class="tl-time">10:00 AM</div><div class="tl-dot g"></div><div class="tl-c"><div class="tl-name">Rosa Mendoza – Christening</div><div class="tl-det">Dimsum Cart · 20–50 guests · Sta. Mesa</div></div><span class="pill confirmed">✓</span></div>
+            <div class="tl-item"><div class="tl-time">4:00 PM</div><div class="tl-dot"></div><div class="tl-c"><div class="tl-name">Carlo Tan – Graduation</div><div class="tl-det">BBQ + Drinks · 51–100 guests · Marikina</div></div><span class="pill confirmed">✓</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ALL BOOKINGS -->
+      <div class="apanel" id="panel-bookings">
+        <div class="phead"><div><div class="ptitle">All Bookings</div><div class="psub">Manage every booking request</div></div></div>
+        <div class="frow" style="margin-bottom:14px">
+          <button class="fb active" onclick="filterCards('all',this)">All</button>
+          <button class="fb" onclick="filterCards('pending',this)">Pending</button>
+          <button class="fb" onclick="filterCards('confirmed',this)">Confirmed</button>
+          <button class="fb" onclick="filterCards('completed',this)">Completed</button>
+          <button class="fb" onclick="filterCards('cancelled',this)">Cancelled</button>
+        </div>
+        <div id="all-bcards">
+          <div class="bcard" data-s="pending"><div class="bcard-top"><div><div class="bcard-name">Maria Santos</div><div class="bcard-ref">KMJ-0024</div></div><span class="pill pending">⏳ Pending</span></div><div class="bcard-info"><div>📅 Mar 15, 2026</div><div>🕐 2:00 PM · 3hrs</div><div>📦 Taco + BBQ</div><div>💰 ₱8,300</div></div><div class="bcard-acts"><button class="ab c" onclick="confirmCard(this,'Maria Santos')">✓</button><button class="ab x" onclick="cancelCard(this)">✗</button><button class="ab v" onclick="openDModal('Maria Santos','Birthday Party','Mar 15, 2026','2:00 PM','Taco + BBQ','₱8,300','50–100','Mabini St, QC','Pending')">View</button></div></div>
+          <div class="bcard" data-s="pending"><div class="bcard-top"><div><div class="bcard-name">Juan dela Cruz</div><div class="bcard-ref">KMJ-0023</div></div><span class="pill pending">⏳ Pending</span></div><div class="bcard-info"><div>📅 Mar 22, 2026</div><div>🕐 5:00 PM · 6hrs</div><div>📦 Full Package</div><div>💰 ₱19,200</div></div><div class="bcard-acts"><button class="ab c" onclick="confirmCard(this,'Juan dela Cruz')">✓</button><button class="ab x" onclick="cancelCard(this)">✗</button><button class="ab v" onclick="openDModal('Juan dela Cruz','Wedding','Mar 22, 2026','5:00 PM','Full Package','₱19,200','200+','BGC Taguig','Pending')">View</button></div></div>
+          <div class="bcard" data-s="pending"><div class="bcard-top"><div><div class="bcard-name">Ana Reyes</div><div class="bcard-ref">KMJ-0022</div></div><span class="pill pending">⏳ Pending</span></div><div class="bcard-info"><div>📅 Mar 28, 2026</div><div>🕐 12:00 PM · 4hrs</div><div>📦 Pasta + Drinks</div><div>💰 ₱7,000</div></div><div class="bcard-acts"><button class="ab c" onclick="confirmCard(this,'Ana Reyes')">✓</button><button class="ab x" onclick="cancelCard(this)">✗</button><button class="ab v" onclick="openDModal('Ana Reyes','Corporate','Mar 28, 2026','12:00 PM','Pasta + Drinks','₱7,000','51–100','Makati','Pending')">View</button></div></div>
+          <div class="bcard" data-s="confirmed"><div class="bcard-top"><div><div class="bcard-name">Rosa Mendoza</div><div class="bcard-ref">KMJ-0021</div></div><span class="pill confirmed">✓ Confirmed</span></div><div class="bcard-info"><div>📅 Mar 6, 2026</div><div>🕐 10:00 AM</div><div>📦 Dimsum Cart</div><div>💰 ₱3,500</div></div><div class="bcard-acts"><button class="ab v" onclick="openDModal('Rosa Mendoza','Christening','Mar 6, 2026','10:00 AM','Dimsum Cart','₱3,500','20–50','Sta. Mesa','Confirmed')">View</button></div></div>
+          <div class="bcard" data-s="confirmed"><div class="bcard-top"><div><div class="bcard-name">Carlo Tan</div><div class="bcard-ref">KMJ-0020</div></div><span class="pill confirmed">✓ Confirmed</span></div><div class="bcard-info"><div>📅 Mar 6, 2026</div><div>🕐 4:00 PM</div><div>📦 BBQ + Drinks</div><div>💰 ₱6,600</div></div><div class="bcard-acts"><button class="ab v" onclick="openDModal('Carlo Tan','Graduation','Mar 6, 2026','4:00 PM','BBQ + Drinks','₱6,600','51–100','Marikina','Confirmed')">View</button></div></div>
+          <div class="bcard" data-s="completed"><div class="bcard-top"><div><div class="bcard-name">Lena Gomez</div><div class="bcard-ref">KMJ-0019</div></div><span class="pill completed">✔ Completed</span></div><div class="bcard-info"><div>📅 Feb 25, 2026</div><div>🕐 6:00 PM</div><div>📦 Full Package</div><div>💰 ₱18,000</div></div><div class="bcard-acts"><button class="ab v" onclick="openDModal('Lena Gomez','Debut','Feb 25, 2026','6:00 PM','Full Package','₱18,000','101–200','Manila Hotel','Completed')">View</button></div></div>
+        </div>
+      </div>
+
+      <!-- SCHEDULE -->
+      <div class="apanel" id="panel-calendar">
+        <div class="phead"><div><div class="ptitle">Schedule — March 2026</div><div class="psub">All confirmed and upcoming events</div></div></div>
+        <div class="tcard" style="padding:14px">
+          <div class="acalgrid" style="margin-bottom:6px">
+            <div class="acal-dn">Sun</div><div class="acal-dn">Mon</div><div class="acal-dn">Tue</div><div class="acal-dn">Wed</div><div class="acal-dn">Thu</div><div class="acal-dn">Fri</div><div class="acal-dn">Sat</div>
+          </div>
+          <div class="acalgrid" id="acalcells"></div>
+        </div>
+      </div>
+
+      <!-- CLIENTS -->
+      <div class="apanel" id="panel-clients">
+        <div class="phead"><div><div class="ptitle">Client Directory</div><div class="psub">All clients who have made bookings</div></div></div>
+        <div class="bcard"><div class="bcard-top"><div><div class="bcard-name">Maria Santos</div><div style="font-size:11px;color:var(--muted)">+63 912 345 6789 · maria@email.com</div></div><span style="font-weight:700;color:var(--accent);font-size:13px">₱12,800</span></div><div class="bcard-info"><div>📋 2 bookings</div><div>📅 Last: Mar 15, 2026</div></div></div>
+        <div class="bcard"><div class="bcard-top"><div><div class="bcard-name">Juan dela Cruz</div><div style="font-size:11px;color:var(--muted)">+63 998 765 4321</div></div><span style="font-weight:700;color:var(--accent);font-size:13px">₱19,200</span></div><div class="bcard-info"><div>📋 1 booking</div><div>📅 Last: Mar 22, 2026</div></div></div>
+        <div class="bcard"><div class="bcard-top"><div><div class="bcard-name">Rosa Mendoza</div><div style="font-size:11px;color:var(--muted)">+63 917 444 5555</div></div><span style="font-weight:700;color:var(--accent);font-size:13px">₱14,500</span></div><div class="bcard-info"><div>📋 3 bookings</div><div>📅 Last: Mar 6, 2026</div></div></div>
+        <div class="bcard"><div class="bcard-top"><div><div class="bcard-name">Lena Gomez</div><div style="font-size:11px;color:var(--muted)">+63 916 999 0000</div></div><span style="font-weight:700;color:var(--accent);font-size:13px">₱18,000</span></div><div class="bcard-info"><div>📋 1 booking</div><div>📅 Last: Feb 25, 2026</div></div></div>
+        <div class="bcard"><div class="bcard-top"><div><div class="bcard-name">Carlo Tan</div><div style="font-size:11px;color:var(--muted)">+63 999 123 4567</div></div><span style="font-weight:700;color:var(--accent);font-size:13px">₱13,100</span></div><div class="bcard-info"><div>📋 2 bookings</div><div>📅 Last: Mar 6, 2026</div></div></div>
+      </div>
+
+      <!-- REPORTS -->
+      <div class="apanel" id="panel-reports">
+        <div class="phead"><div><div class="ptitle">Reports & Analytics</div><div class="psub">March 2026 performance overview</div></div></div>
+        <div class="stats">
+          <div class="stat"><div class="stat-ic">💰</div><div class="stat-val">₱84K</div><div class="stat-lbl">Revenue (Mar)</div></div>
+          <div class="stat hi"><div class="stat-ic">📈</div><div class="stat-val">+24%</div><div class="stat-lbl">vs Last Month</div></div>
+          <div class="stat"><div class="stat-ic">🎉</div><div class="stat-val">14</div><div class="stat-lbl">Events (Mar)</div></div>
+          <div class="stat"><div class="stat-ic">⭐</div><div class="stat-val">4.9</div><div class="stat-lbl">Avg. Rating</div></div>
+        </div>
+        <div class="rgrid">
+          <div class="rcard"><div class="rtitle">📦 Most Booked Packages</div>
+            <div class="pb-row"><div class="pb-name">BBQ Skewers</div><div class="bar-bg"><div class="bar-fill" style="width:90%"></div></div><div class="bar-cnt">9</div></div>
+            <div class="pb-row"><div class="pb-name">Taco & Nachos</div><div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div><div class="bar-cnt">7</div></div>
+            <div class="pb-row"><div class="pb-name">Drinks & Juice</div><div class="bar-bg"><div class="bar-fill" style="width:65%"></div></div><div class="bar-cnt">6</div></div>
+            <div class="pb-row"><div class="pb-name">Pasta Station</div><div class="bar-bg"><div class="bar-fill" style="width:55%"></div></div><div class="bar-cnt">5</div></div>
+            <div class="pb-row"><div class="pb-name">Dimsum Cart</div><div class="bar-bg"><div class="bar-fill" style="width:40%"></div></div><div class="bar-cnt">4</div></div>
+          </div>
+          <div class="rcard"><div class="rtitle">🏆 Top Clients</div>
+            <div class="tc-row"><div class="tc-rank">1</div><div class="tc-info"><div class="tc-name">Juan dela Cruz</div><div class="tc-sub">1 booking</div></div><div class="tc-amt">₱19,200</div></div>
+            <div class="tc-row"><div class="tc-rank">2</div><div class="tc-info"><div class="tc-name">Lena Gomez</div><div class="tc-sub">1 booking</div></div><div class="tc-amt">₱18,000</div></div>
+            <div class="tc-row"><div class="tc-rank">3</div><div class="tc-info"><div class="tc-name">Rosa Mendoza</div><div class="tc-sub">3 bookings</div></div><div class="tc-amt">₱14,500</div></div>
+            <div class="tc-row"><div class="tc-rank">4</div><div class="tc-info"><div class="tc-name">Carlo Tan</div><div class="tc-sub">2 bookings</div></div><div class="tc-amt">₱13,100</div></div>
+            <div class="tc-row"><div class="tc-rank">5</div><div class="tc-info"><div class="tc-name">Maria Santos</div><div class="tc-sub">2 bookings</div></div><div class="tc-amt">₱12,800</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PACKAGES -->
+      <div class="apanel" id="panel-packages">
+        <div class="phead"><div><div class="ptitle">Manage Packages</div><div class="psub">Edit your food cart offerings</div></div><button class="btn btnp" style="font-size:13px;padding:10px 16px">+ Add</button></div>
+        <div class="bcard"><div class="bcard-top"><div><div class="bcard-name">🌮 Taco & Nachos Cart</div><div style="font-size:12px;color:var(--accent);font-weight:700">₱4,500</div></div><span class="pill confirmed">Active</span></div><div class="bcard-info"><div>📋 7 bookings</div></div><div class="bcard-acts"><button class="ab v">Edit</button></div></div>
+        <div class="bcard"><div class="bcard-top"><div><div class="bcard-name">🍢 BBQ Skewers Cart</div><div style="font-size:12px;color:var(--accent);font-weight:700">₱3,800</div></div><span class="pill confirmed">Active</span></div><div class="bcard-info"><div>📋 9 bookings</div></div><div class="bcard-acts"><button class="ab v">Edit</button></div></div>
+        <div class="bcard"><div class="bcard-top"><div><div class="bcard-name">🍝 Pasta Station</div><div style="font-size:12px;color:var(--accent);font-weight:700">₱4,200</div></div><span class="pill confirmed">Active</span></div><div class="bcard-info"><div>📋 5 bookings</div></div><div class="bcard-acts"><button class="ab v">Edit</button></div></div>
+        <div class="bcard"><div class="bcard-top"><div><div class="bcard-name">🥟 Dimsum Cart</div><div style="font-size:12px;color:var(--accent);font-weight:700">₱3,500</div></div><span class="pill confirmed">Active</span></div><div class="bcard-info"><div>📋 4 bookings</div></div><div class="bcard-acts"><button class="ab v">Edit</button></div></div>
+        <div class="bcard"><div class="bcard-top"><div><div class="bcard-name">🍮 Dessert Cart</div><div style="font-size:12px;color:var(--accent);font-weight:700">₱3,200</div></div><span class="pill confirmed">Active</span></div><div class="bcard-info"><div>📋 3 bookings</div></div><div class="bcard-acts"><button class="ab v">Edit</button></div></div>
+        <div class="bcard"><div class="bcard-top"><div><div class="bcard-name">🥤 Drinks & Juice Bar</div><div style="font-size:12px;color:var(--accent);font-weight:700">₱2,800</div></div><span class="pill confirmed">Active</span></div><div class="bcard-info"><div>📋 6 bookings</div></div><div class="bcard-acts"><button class="ab v">Edit</button></div></div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- BOOKING DETAIL MODAL -->
+<div class="doverlay" id="doverlay" onclick="closeDModal(event)">
+  <div class="dmodal">
+    <div class="dmod-title" id="dmod-title"></div>
+    <div class="dmod-sub">Full booking details</div>
+    <div id="dmod-body"></div>
+    <div class="dmod-foot">
+      <button class="btn btno" onclick="closeDModal()">Close</button>
+      <button class="btnr" id="dmod-cancel" onclick="closeDModal();showToast('Booking cancelled.','e')">Cancel Booking</button>
+      <button class="btn btnp" id="dmod-confirm">✓ Confirm</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script-admin.js"></script>
+</body>
+</html>
